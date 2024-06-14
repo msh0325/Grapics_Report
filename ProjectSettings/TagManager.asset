@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: backGround
+    uniqueID: 803533711
+    locked: 0
+  - name: playGround
+    uniqueID: 3949139953
+    locked: 0
+  - name: objectLayer
+    uniqueID: 2291768771
+    locked: 0
+  - name: Player
+    uniqueID: 1598131079
+    locked: 0
