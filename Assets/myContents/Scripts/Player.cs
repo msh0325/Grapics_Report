@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     Vector2 velocity;
     new Rigidbody2D rigidbody;
     Animator anim;
+    private bool isjump=false;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -34,13 +35,32 @@ public class Player : MonoBehaviour
         else{
             anim.SetBool("isWalk",false);
         }
-        if(Input.GetKeyDown(KeyCode.Z)){
+        if(Input.GetKeyDown(KeyCode.Z)&&!isjump){
             rigidbody.AddForce(new Vector2(0,250));
             anim.SetTrigger("isJump");
+            isjump = true;
         }
-        Debug.Log(transform.position.y);
     }
     void FixedUpdate(){
         rigidbody.velocity = new Vector2(velocity.x*speed,rigidbody.velocity.y);
     }
+
+    void OnCollisionEnter2D(Collision2D other){
+        if(other.gameObject.tag == "Ground"){
+            isjump = false;
+            anim.Play("AM_Idle");
+        }
+    }
+    void OnCollisionExit2D(Collision2D other){
+        if(other.gameObject.tag == "Ground"&&!isjump){
+            anim.Play("AM_Falling");
+        }
+    }
+    void upStatus(){
+        Debug.Log("UP");
+    }
+    void downStatus(){
+        Debug.Log("DOWN");
+    }
+
 }
