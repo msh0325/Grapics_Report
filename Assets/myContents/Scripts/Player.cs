@@ -56,6 +56,9 @@ public class Player : MonoBehaviour
             anim.Play("AM_Falling");
         }
     }
+    void jumpStatus(){
+        Debug.Log("JUMP");
+    }
     void upStatus(){
         Debug.Log("UP");
     }
